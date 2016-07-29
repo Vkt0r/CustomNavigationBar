@@ -33,8 +33,8 @@ func reset()
 It's recommended that in the `viewWillDisappear`, you should call this method to avoid any side effects:
 ```swift
 override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.navigationController?.navigationBar.reset()
+   super.viewWillDisappear(animated)
+   self.navigationController?.navigationBar.reset()
 }
 ```
 
