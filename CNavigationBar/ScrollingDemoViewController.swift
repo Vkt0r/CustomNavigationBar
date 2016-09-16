@@ -27,6 +27,8 @@ class ScrollingDemoViewController: UIViewController {
 
 extension ScrollingDemoViewController: UITableViewDelegate, UITableViewDataSource {
     
+    // MARK: UITableViewDelegate
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
