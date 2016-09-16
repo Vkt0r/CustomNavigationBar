@@ -46,5 +46,5 @@ override func viewWillDisappear(animated: Bool) {
 }
 ```
 
-You can see the demo projects for more reference.
+You can see the two demo projects for know how to use it.
 
