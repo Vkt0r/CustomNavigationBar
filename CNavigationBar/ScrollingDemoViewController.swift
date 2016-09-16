@@ -57,6 +57,7 @@ extension ScrollingDemoViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func transformNavigationBarTransform(_ progress: CGFloat) {
+        
         self.navigationController?.navigationBar.setTranslationY(-44 * progress)
         self.navigationController?.navigationBar.setAlphaElements(1 - progress)
     }
