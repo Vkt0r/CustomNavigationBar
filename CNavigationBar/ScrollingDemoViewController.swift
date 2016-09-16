@@ -16,6 +16,7 @@ class ScrollingDemoViewController: UIViewController {
         super.viewDidLoad()
         
         self.tableView.delegate = self
+        
         self.tableView.dataSource = self
     }
     
