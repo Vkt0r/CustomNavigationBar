@@ -19,17 +19,17 @@ class DemoViewController: UIViewController {
 
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        self.navigationController?.navigationBar._setBackgroundColor(UIColor.clearColor())
+        self.navigationController?.navigationBar._setBackgroundColor(UIColor.clear)
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.scrollViewDidScroll(self.tableView)
         self.navigationController?.navigationBar.shadowImage = UIImage()
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.navigationBar.reset()
     }
@@ -37,34 +37,34 @@ class DemoViewController: UIViewController {
 
 extension DemoViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.textLabel?.text = "Text"
         return cell
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 5
     }
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Section \(section)"
     }
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let color = UIColor(colorLiteralRed: 0, green: 175/255, blue: 240/255, alpha: 1)
         let offsetY = scrollView.contentOffset.y
         
         if offsetY > NAVBAR_CHANGE_POINT {
             let alpha = min(1, 1 - ((NAVBAR_CHANGE_POINT + 64 - offsetY) / 64))
-            self.navigationController?.navigationBar._setBackgroundColor(color.colorWithAlphaComponent(alpha))
+            self.navigationController?.navigationBar._setBackgroundColor(color.withAlphaComponent(alpha))
         }
         else {
-            self.navigationController?.navigationBar._setBackgroundColor(color.colorWithAlphaComponent(0))
+            self.navigationController?.navigationBar._setBackgroundColor(color.withAlphaComponent(0))
         }
     }
 }

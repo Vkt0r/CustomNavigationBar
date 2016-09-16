@@ -19,7 +19,7 @@ class ScrollingDemoViewController: UIViewController {
         self.tableView.dataSource = self
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.navigationBar.reset()
     }
@@ -27,21 +27,21 @@ class ScrollingDemoViewController: UIViewController {
 
 extension ScrollingDemoViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.textLabel?.text = "Text"
         return cell
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
 
         let offsetY = scrollView.contentOffset.y
         
@@ -54,7 +54,7 @@ extension ScrollingDemoViewController: UITableViewDelegate, UITableViewDataSourc
         }
     }
     
-    func transformNavigationBarTransform(progress: CGFloat) {
+    func transformNavigationBarTransform(_ progress: CGFloat) {
         self.navigationController?.navigationBar.setTranslationY(-44 * progress)
         self.navigationController?.navigationBar.setAlphaElements(1 - progress)
     }

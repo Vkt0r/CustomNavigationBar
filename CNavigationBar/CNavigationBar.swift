@@ -10,7 +10,7 @@ import UIKit
 
 extension UINavigationBar {
     
-    private struct AssociatedKeys {
+    fileprivate struct AssociatedKeys {
         static var OverlayKey = "nsh_OverlayKey"
     }
     
@@ -32,42 +32,42 @@ extension UINavigationBar {
         }
     }
     
-    func _setBackgroundColor(color: UIColor) {
+    func _setBackgroundColor(_ color: UIColor) {
         
         if self.overlay == nil {
-            self.setBackgroundImage(UIImage(), forBarMetrics: .Default)
-            self.overlay = UIView(frame: CGRectMake(0, -20, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) + 20 ))
-            self.overlay?.userInteractionEnabled = false
-            self.overlay?.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
-            self.insertSubview(self.overlay!, atIndex: 0)
+            self.setBackgroundImage(UIImage(), for: .default)
+            self.overlay = UIView(frame: CGRect(x: 0, y: -20, width: self.bounds.width, height: self.bounds.height + 20 ))
+            self.overlay?.isUserInteractionEnabled = false
+            self.overlay?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            self.insertSubview(self.overlay!, at: 0)
         }
         
         self.overlay?.backgroundColor = color
     }
     
-    func setTranslationY(translation: CGFloat) {
-        self.transform  = CGAffineTransformMakeTranslation(0, translation)
+    func setTranslationY(_ translation: CGFloat) {
+        self.transform  = CGAffineTransform(translationX: 0, y: translation)
     }
     
-    func setAlphaElements(alpha: CGFloat) {
+    func setAlphaElements(_ alpha: CGFloat) {
         
-        guard let leftElements = self.valueForKey("_leftViews") as? Array<UIView> else { return }
+        guard let leftElements = self.value(forKey: "_leftViews") as? Array<UIView> else { return }
         
         for element in leftElements {
             element.alpha = alpha
         }
         
-        guard let rightElements = self.valueForKey("_rightViews") as? Array<UIView> else { return }
+        guard let rightElements = self.value(forKey: "_rightViews") as? Array<UIView> else { return }
         
         for element in rightElements {
             element.alpha = alpha
         }
         
-        guard let titleView = self.valueForKey("_titleView") as? UIView else { return }
+        guard let titleView = self.value(forKey: "_titleView") as? UIView else { return }
         titleView.alpha = alpha
         
         for obj in self.subviews {
-            if obj.isKindOfClass(NSClassFromString("UINavigationItemView")!) {
+            if obj.isKind(of: NSClassFromString("UINavigationItemView")!) {
                 obj.alpha = alpha
                 break
             }
@@ -75,7 +75,7 @@ extension UINavigationBar {
     }
     
     func reset() {
-        self.setBackgroundImage(nil, forBarMetrics: .Default)
+        self.setBackgroundImage(nil, for: .default)
         self.overlay?.removeFromSuperview()
         self.overlay = nil
     }
