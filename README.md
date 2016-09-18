@@ -16,7 +16,6 @@ There's this very interesting library called [LTNavigationBar](https://github.co
 I've chosen to write it in `Swift` as it can be highly optimized by the compiler. The two demo projects are written in `Swift` to demonstrate how it works.
 
 ## Purpose
-
 The main purpose of this library is change the appearance of an `UINavigationBar` dynamically 😅
 
 
