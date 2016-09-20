@@ -1,4 +1,3 @@
-
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat
             )](http://mit-license.org)
 [![Language](http://img.shields.io/badge/language-swift-orange.svg?style=flat
